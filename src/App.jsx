@@ -2,6 +2,7 @@ import React from "react"
 import FeedbackOptions from './components/FeedbackOptions'
 // import Section from "./components/Section"
 import Statistics from "./components/Statistics"
+import Notification from "./components/Notification"
 
 
 class App extends React.Component {
@@ -46,18 +47,7 @@ class App extends React.Component {
     render() {
         const total = this.countTotalFeedback()
         const percent = this.countPositiveFeedbackPercentage()
-        if(this.state.bad === 0 && this.state.good === 0 && this.state.neutral === 0) {
-          return (
-            <>
-            <FeedbackOptions
-                    onGoodClick = {this.goodFeedback}
-                    onNeutralClick = {this.neutralFeedback}
-                    onBadClick = {this.badFeedback}
-                />
-            <span>notification</span>
-            </>
-          )
-        } else {
+        
         return (
             <>
                 <FeedbackOptions
@@ -65,15 +55,16 @@ class App extends React.Component {
                     onNeutralClick = {this.neutralFeedback}
                     onBadClick = {this.badFeedback}
                 />
-                <Statistics
+                {(this.state.bad || this.state.good || this.state.neutral) ? <Statistics
                     good={this.state.good} 
                     neutral={this.state.neutral} 
                     bad={this.state.bad} 
                     total={total} 
                     positivePercentage={percent}
-                />
+                /> : 
+                <Notification message = "No feedback given"/>}
             </>
-        )}
+        )
     }
 }
 
