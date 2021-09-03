@@ -4,7 +4,6 @@ import React from 'react';
 function FeedbackOptions ({onGoodClick, onNeutralClick, onBadClick}) {
     return (
         <>
-            <h2>Please leave feedback</h2>
             <ul className='control-feedback'>
             <li><button className='feedback-button' type='button' onClick = {onGoodClick}>Good</button></li>
             <li><button className='feedback-button' type='button' onClick = {onNeutralClick}>Neutral</button></li>

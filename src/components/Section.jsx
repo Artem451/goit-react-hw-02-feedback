@@ -1,8 +1,11 @@
 import React from 'react';
 
-function Section({title}) {
+function Section({title, children}) {
     return ( 
-      <h2>{title}</h2>
+      <section>
+        <h2>{title}</h2>
+        {children}
+      </section>
     )
 }
 
